@@ -1,0 +1,46 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("../../img/greetings.jpg");
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+.home-container h1 {
+    font-size: 5rem;
+    padding: 0;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+.home-container p {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+}
+
+.home-container button {
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    margin: 0 2rem;
+
+}
+
+.home-container a {
+    text-decoration: none;
+    color: inherit;
+}

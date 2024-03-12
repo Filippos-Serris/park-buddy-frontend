@@ -1,4 +1,4 @@
-const Greetings = () => {
+const Home = () => {
   return (
     <div>
       <h1>Welcome to BiteBuddy</h1>
@@ -12,4 +12,4 @@ const Greetings = () => {
   );
 };
 
-export default Greetings;
+export default Home;

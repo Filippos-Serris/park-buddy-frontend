@@ -1,8 +1,16 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../assets/styles/pages/Home.css";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const logInHandle = () => {
+    navigate("/login");
+  };
+  const registerHandle = () => {
+    navigate("/register");
+  };
   return (
     <div className="home-container">
       <h1>
@@ -14,12 +22,8 @@ const Home = () => {
         in and get started.
       </p>
       <div>
-        <button>
-          <Link to="/login">Log in</Link>
-        </button>
-        <button>
-          <Link to="/register">Register</Link>
-        </button>
+        <button onClick={logInHandle}>Log in</button>
+        <button onClick={registerHandle}>Register</button>
       </div>
     </div>
   );

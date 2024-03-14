@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useContext } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { UserContext } from "../store/user-context";
@@ -9,8 +9,6 @@ const Register = () => {
 
   const [firstLoad, setFirstLoad] = useState(true);
   const [triggerSubmit, setTriggerSubmit] = useState(false);
-
-  const { setRole } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -41,7 +39,9 @@ const Register = () => {
         const token = resData.token;
         localStorage.setItem("token", token);
 
-        setRole(resData.role);
+        const role = resData.role;
+        localStorage.setItem("role", role);
+
         navigate("/dashboard");
       }
       fetchUser();

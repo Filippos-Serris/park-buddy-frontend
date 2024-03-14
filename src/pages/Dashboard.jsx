@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { UserContext } from "../store/user-context";
 import { useNavigate } from "react-router-dom";
-import ClientDashboard from "../components/Client/ClientDashboard";
-import OwnerDashboard from "../components/Owner/OwnerDashboard";
+
+import ClientDashboard from "../components/Client/Dashboard/ClientDashboard";
+import OwnerDashboard from "../components/Owner/Dashboard/OwnerDashboard";
 
 const Dashboard = () => {
-  const { role } = useContext(UserContext);
+  const role = localStorage.getItem("role");
   const navigate = useNavigate();
 
   const vehicle = () => {
@@ -18,13 +17,20 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>{role}</h1>
-
-      <ClientDashboard />
-      <OwnerDashboard />
-
-      <button onClick={vehicle}>Vehicle</button>
-      <button onClick={parking}>Parking</button>
+      <h1>Your {role}</h1>
+      {role === "client" && (
+        <div>
+          <ClientDashboard />
+          <button onClick={vehicle}>Vehicle</button>
+        </div>
+      )}
+      {role === "owner" && (
+        <div>
+          <OwnerDashboard />
+          <button onClick={parking}>Parking</button>
+          <button onClick={vehicle}>Vehicle</button>
+        </div>
+      )}
     </div>
   );
 };

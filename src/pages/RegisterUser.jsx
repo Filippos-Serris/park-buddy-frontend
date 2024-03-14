@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../assets/styles/RegistrationForm.css";
+import "../assets/styles/pages/RegisterUser.css";
 
-const RegistrationForm = () => {
+const Register = () => {
   const [firstLoad, setFirstLoad] = useState(true);
-  const [submit, setSubmit] = useState(true);
+  const [triggerSubmit, setTriggerSubmit] = useState(false);
 
   const [matchingPasswords, setMatchingPasswords] = useState(true);
-  const [roleSelected, setRoleSelected] = useState(false);
+  const [roleError, setRoleError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -22,13 +22,12 @@ const RegistrationForm = () => {
   const [role, setRole] = useState(null);
 
   useEffect(() => {
+    if (firstLoad) {
+      setFirstLoad(false);
+      return;
+    }
     try {
-      if (firstLoad) {
-        setFirstLoad(false);
-        return;
-      }
-
-      const formData = {
+      const userData = {
         firstName: firstNameRef.current.value,
         lastName: lastNameRef.current.value,
         username: usernameRef.current.value,
@@ -38,23 +37,23 @@ const RegistrationForm = () => {
         role: role,
       };
 
-      async function fetchOwner() {
+      async function postUser() {
         const res = await fetch("http://localhost:8080/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(userData),
         });
-        if (res.status == 200) {
+        if (res.status === 200) {
           navigate("/login");
         }
       }
-      fetchOwner();
-    } catch (e) {
-      console.log(e.message);
+      postUser();
+    } catch (error) {
+      console.log("Error:", error.message);
     }
-  }, [submit]);
+  }, [triggerSubmit]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -67,10 +66,11 @@ const RegistrationForm = () => {
     } else setMatchingPasswords(false);
 
     if (role === null) {
-      setRoleSelected(false);
-    } else setRoleSelected(true);
+      setRoleError(true);
+    } else setRoleError(false);
 
-    if (password === repeatPassword && role !== null) setSubmit(!submit);
+    if (password === repeatPassword && role !== null)
+      setTriggerSubmit(!triggerSubmit);
   };
 
   const roleChangeHandler = (event) => {
@@ -178,6 +178,7 @@ const RegistrationForm = () => {
             onChange={roleChangeHandler}
           ></input>
           <label htmlFor="owner">Owner</label>
+          {roleError && <p>role selection is mandatory</p>}
         </div>
 
         <button>Submit</button>
@@ -186,4 +187,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default Register;

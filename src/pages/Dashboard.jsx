@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import { UserContext } from "../store/user-context";
 import { useNavigate } from "react-router-dom";
+import ClientDashboard from "../components/Client/ClientDashboard";
+import OwnerDashboard from "../components/Owner/OwnerDashboard";
+
 const Dashboard = () => {
-  const { user } = useContext(UserContext);
+  const { role } = useContext(UserContext);
   const navigate = useNavigate();
 
   const vehicle = () => {
@@ -15,9 +18,10 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>
-        {user.role}, {user.id}
-      </h1>
+      <h1>{role}</h1>
+
+      <ClientDashboard />
+      <OwnerDashboard />
 
       <button onClick={vehicle}>Vehicle</button>
       <button onClick={parking}>Parking</button>

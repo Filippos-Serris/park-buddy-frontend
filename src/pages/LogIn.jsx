@@ -1,14 +1,15 @@
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { UserContext } from "../store/user-context";
-
 const Register = () => {
   const usernameRef = useRef();
   const passwordRef = useRef();
 
   const [firstLoad, setFirstLoad] = useState(true);
   const [triggerSubmit, setTriggerSubmit] = useState(false);
+
+  const [showError, setShowError] = useState(false);
+  const [error, setError] = useState();
 
   const navigate = useNavigate();
 
@@ -17,13 +18,13 @@ const Register = () => {
       setFirstLoad(false);
       return;
     }
-    try {
-      const logInUser = {
-        username: usernameRef.current.value,
-        password: passwordRef.current.value,
-      };
+    const logInUser = {
+      username: usernameRef.current.value,
+      password: passwordRef.current.value,
+    };
 
-      async function fetchUser() {
+    async function fetchUser() {
+      try {
         const res = await fetch("http://localhost:8080/login", {
           method: "POST",
           headers: {
@@ -32,7 +33,8 @@ const Register = () => {
           body: JSON.stringify(logInUser),
         });
         if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
+          const errorData = await res.json();
+          setError(`Error: ${errorData.error}`);
         }
 
         const resData = await res.json();
@@ -43,11 +45,11 @@ const Register = () => {
         localStorage.setItem("role", role);
 
         navigate("/dashboard");
+      } catch (error) {
+        setShowError(true);
       }
-      fetchUser();
-    } catch (error) {
-      console.log("Error:", error.message);
     }
+    fetchUser();
   }, [triggerSubmit]);
 
   const handleSubmit = (event) => {
@@ -56,20 +58,23 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username</label>
-      <input id="username" type="text" ref={usernameRef} />
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username</label>
+        <input id="username" type="text" ref={usernameRef} />
 
-      <label htmlFor="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        ref={passwordRef}
-        autoComplete="on"
-      />
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          ref={passwordRef}
+          autoComplete="on"
+        />
 
-      <button>Log in</button>
-    </form>
+        <button>Log in</button>
+      </form>
+      {showError && <p>{error}</p>}
+    </div>
   );
 };
 

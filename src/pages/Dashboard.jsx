@@ -7,10 +7,6 @@ const Dashboard = () => {
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
 
-  const vehicle = () => {
-    navigate("/add-vehicle");
-  };
-
   const parking = () => {
     navigate("/add-parking");
   };
@@ -21,14 +17,11 @@ const Dashboard = () => {
       {role === "client" && (
         <div>
           <ClientDashboard />
-          <button onClick={vehicle}>Vehicle</button>
         </div>
       )}
       {role === "owner" && (
         <div>
           <OwnerDashboard />
-          <button onClick={parking}>Parking</button>
-          <button onClick={vehicle}>Vehicle</button>
         </div>
       )}
     </div>

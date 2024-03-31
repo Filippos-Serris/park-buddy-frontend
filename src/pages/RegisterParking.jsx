@@ -9,7 +9,7 @@ const RegisterParking = () => {
   const numberRef = useRef();
   const postalRef = useRef();
   const cityRef = useRef();
-  const vehicleSlotRef = useRef();
+  const carSlotRef = useRef();
   const motoSlotRef = useRef();
   const hourlyChargeRef = useRef();
   const dailyChargeRef = useRef();
@@ -35,7 +35,7 @@ const RegisterParking = () => {
           city: cityRef.current.value,
         },
         slots: {
-          vehicle: vehicleSlotRef.current.value,
+          car: carSlotRef.current.value,
           moto: motoSlotRef.current.value,
         },
         pricing: {
@@ -120,7 +120,7 @@ const RegisterParking = () => {
           type="text"
           required
           minLength="5"
-          maxLength="10"
+          maxLength="20"
           ref={cityRef}
         />
       </fieldset>
@@ -128,14 +128,8 @@ const RegisterParking = () => {
       <fieldset>
         <legend>Slots</legend>
 
-        <label htmlFor="vehicles">Vehicles</label>
-        <input
-          type="number"
-          id="vehicles"
-          required
-          min="0"
-          ref={vehicleSlotRef}
-        />
+        <label htmlFor="car">Vehicles</label>
+        <input type="number" id="car" required min="0" ref={carSlotRef} />
 
         <label htmlFor="moto">Moto</label>
         <input type="moto" id="moto" required min="0" ref={motoSlotRef} />

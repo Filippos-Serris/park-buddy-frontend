@@ -9,8 +9,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import RegisterVehicle from "./pages/RegisterVehicle.jsx";
 import RegisterParking from "./pages/RegisterParking.jsx";
 import SearchParking from "./pages/SearchParking.jsx";
-import { UserProvider } from "./store/user-context";
-import LogOut from "./pages/LogOut.jsx";
+import Logout from "./pages/Logout.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Homepage /> },
@@ -18,7 +17,7 @@ const router = createBrowserRouter([
   { path: "/register", element: <RegisterUser /> },
   {
     path: "/",
-    element: <LogOut />,
+    element: <Logout />,
     children: [
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/add-vehicle", element: <RegisterVehicle /> },
@@ -29,11 +28,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

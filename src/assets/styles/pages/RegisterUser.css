@@ -16,47 +16,62 @@
     align-items: center;
 }
 
-.registration-form-container h1 {
-    color: white;
-    font-size: 3rem;
+.registration-form h1 {
+    align-self: center;
 }
 
-.registration-form-container p {
-    color: white;
+.registration-form p {
     text-align: center;
-    font-size: 1.5rem;
-    font-weight: bolder;
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+    padding: 0 2rem
 }
 
 .registration-form {
+    background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 3rem 1rem;
+    border-radius: 1rem;
 }
 
-.registration-form label,
-legend {
-    color: white;
-    font-weight: bolder;
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+.name,
+.password {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-container,
+.password-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+}
+
+.field-containers {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+.registration-form label {
+    color: grey;
+    font-size: 0.8rem;
 
 }
 
 .registration-form input {
-    border-radius: 0.3rem;
-    font-size: 1.5rem;
-}
-
-.registration-form-container div {
-    padding: 0.5rem;
+    width: fit-content;
+    border: solid thin grey;
+    border-radius: 0.5rem;
+    width: fit-content;
+    font-size: 1rem;
+    margin-left: 1rem;
 }
 
 .registration-form button {
+    border: none;
+    align-self: center;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
     font-size: 1.5rem;
-    font-weight: bolder;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

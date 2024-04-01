@@ -79,36 +79,39 @@ const Register = () => {
 
   return (
     <div className="registration-form-container">
-      <h1>Sign Up</h1>
-      <p>
-        Either you are searching for a spot to put you precious car or a way to
-        expand your bushiness we have you. <br />
-        Register below and lets get it started
-      </p>
       <form className="registration-form" onSubmit={handleSubmit}>
-        <div className="name">
-          <label htmlFor="firstName">First name</label>
-          <input
-            type="text"
-            id="firstName"
-            ref={firstNameRef}
-            required
-            minLength="4"
-            maxLength="10"
-          ></input>
+        <h1>Sign Up</h1>
+        <p>
+          Either you are searching for a spot to put you precious car or a way
+          to expand your bushiness we have you. <br />
+          Register below and lets get it started
+        </p>
 
-          <label htmlFor="lastName">Last name</label>
-          <input
-            type="text"
-            id="lastName"
-            ref={lastNameRef}
-            required
-            minLength="4"
-            maxLength="10"
-          ></input>
+        <div className="name">
+          <label>Name</label>
+          <div className="name-container">
+            <input
+              type="text"
+              ref={firstNameRef}
+              placeholder="First name"
+              required
+              minLength="4"
+              maxLength="10"
+            />
+
+            <input
+              type="text"
+              id="lastName"
+              ref={lastNameRef}
+              placeholder="Last name"
+              required
+              minLength="4"
+              maxLength="10"
+            />
+          </div>
         </div>
 
-        <div>
+        <div className="field-containers">
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -120,37 +123,41 @@ const Register = () => {
           ></input>
         </div>
 
-        <div>
+        <div className="field-containers">
           <label htmlFor="email">e-mail</label>
           <input type="email" id="email" ref={emailRef} required></input>
         </div>
 
         <div className="password">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            ref={passwordRef}
-            autoComplete="on"
-            required
-            minLength="8"
-            maxLength="10"
-          ></input>
+          <label>Password</label>
+          <div className="password-container">
+            <input
+              type="password"
+              id="password"
+              ref={passwordRef}
+              autoComplete="on"
+              placeholder="Password"
+              required
+              minLength="8"
+              maxLength="10"
+            />
 
-          <label htmlFor="repeat-password">Repeat password</label>
-          <input
-            type="password"
-            id="repeat-password"
-            ref={repeatPasswordRef}
-            autoComplete="on"
-            required
-            minLength="8"
-            maxLength="10"
-          ></input>
-          {!matchingPasswords && <p>passwords not matching try again</p>}
+            <input
+              type="password"
+              id="repeat-password"
+              ref={repeatPasswordRef}
+              autoComplete="on"
+              placeholder="Repeat password"
+              required
+              minLength="8"
+              maxLength="10"
+            />
+
+            {!matchingPasswords && <p>passwords not matching try again</p>}
+          </div>
         </div>
 
-        <div>
+        <div className="field-containers">
           <label htmlFor="contactInfo">Contact information</label>
           <input
             type="number"
@@ -161,7 +168,7 @@ const Register = () => {
         </div>
 
         <div>
-          <label>Role</label>{" "}
+          <label>Role</label>
           <input
             id="client"
             type="radio"

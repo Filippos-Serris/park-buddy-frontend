@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import "../assets/styles/pages/Login.css";
 
 const Register = () => {
   const usernameRef = useRef();
@@ -58,10 +60,19 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        {showError && <p className="error-message">{error}</p>}
         <label htmlFor="username">Username</label>
-        <input id="username" type="text" ref={usernameRef} />
+        <input
+          id="username"
+          type="text"
+          ref={usernameRef}
+          placeholder="type your username"
+          required
+          minLength="4"
+          maxLength="10"
+        />
 
         <label htmlFor="password">Password</label>
         <input
@@ -69,11 +80,17 @@ const Register = () => {
           type="password"
           ref={passwordRef}
           autoComplete="on"
+          placeholder="type your password"
+          required
+          minLength="8"
+          maxLength="10"
         />
 
-        <button>Log in</button>
+        <button>LOGIN</button>
+
+        <p>Or Sing up Using</p>
+        <Link to="/register">Sign Up</Link>
       </form>
-      {showError && <p>{error}</p>}
     </div>
   );
 };

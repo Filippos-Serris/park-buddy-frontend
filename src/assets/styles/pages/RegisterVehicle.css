@@ -1,11 +1,11 @@
-.login-container {
+.vehicle-registration-form-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 
-    background-image: url("../../img/log-in.jpg");
+    background-image: url("../../img/register-car.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,42 +14,42 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    margin-top: 3rem;
+
 }
 
-.login-form {
+.vehicle-registration-form {
     display: flex;
     flex-direction: column;
 
     background-color: white;
-    width: fit-content;
+    width: 40%;
     padding: 2rem;
     border-radius: 1rem;
 }
 
-.login-form label {
+.vehicle-registration-form label {
     color: grey;
     font-size: 0.8rem;
+    margin-right: 0.5rem;
+
 }
 
-.login-form input {
+.vehicle-registration-form input {
     margin-bottom: 1rem;
     border-style: none;
     border-bottom: solid thin grey;
     font-size: 1.5rem;
 }
 
-.login-form button {
-    margin-bottom: 10rem;
+.vehicle-registration-form button {
+    margin: 2rem auto 3rem auto;
     border: none;
     padding: 0.5rem 3rem;
     border-radius: 0.5rem;
     font-size: 1.5rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.login-form p,
-a {
-    align-self: center;
 }
 
 .error-message {
@@ -58,4 +58,5 @@ a {
     font-weight: bolder;
     border-radius: 1rem;
     padding: 1rem 3rem;
+    text-align: center;
 }

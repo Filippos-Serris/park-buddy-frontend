@@ -7,6 +7,9 @@ const Register = () => {
   const [firstLoad, setFirstLoad] = useState(true);
   const [triggerSubmit, setTriggerSubmit] = useState(false);
 
+  const [showError, setShowError] = useState(false);
+  const [error, setError] = useState();
+
   const [matchingPasswords, setMatchingPasswords] = useState(true);
   const [roleError, setRoleError] = useState(false);
 
@@ -26,18 +29,18 @@ const Register = () => {
       setFirstLoad(false);
       return;
     }
-    try {
-      const userData = {
-        firstName: firstNameRef.current.value,
-        lastName: lastNameRef.current.value,
-        username: usernameRef.current.value,
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-        contactInfo: contactInfoRef.current.value,
-        role: role,
-      };
 
-      async function postUser() {
+    const userData = {
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
+      username: usernameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      contactInfo: contactInfoRef.current.value,
+      role: role,
+    };
+    async function postUser() {
+      try {
         const res = await fetch("http://localhost:8080/user", {
           method: "POST",
           headers: {
@@ -45,14 +48,17 @@ const Register = () => {
           },
           body: JSON.stringify(userData),
         });
-        if (res.status === 200) {
+        if (!res.ok) {
+          const errorData = await res.json();
+          setError(`Error: ${errorData.error}`);
+        } else {
           navigate("/login");
         }
+      } catch (error) {
+        setShowError(true);
       }
-      postUser();
-    } catch (error) {
-      console.log("Error:", error.message);
     }
+    postUser();
   }, [triggerSubmit]);
 
   const handleSubmit = (event) => {
@@ -187,6 +193,8 @@ const Register = () => {
           <label htmlFor="owner">Owner</label>
           {roleError && <p>role selection is mandatory</p>}
         </div>
+
+        {showError && <p className="error-message">{error}</p>}
 
         <button>Submit</button>
       </form>

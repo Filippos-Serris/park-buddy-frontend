@@ -2,6 +2,8 @@ import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+import "../assets/styles/pages/Logout.css";
+
 const Logout = () => {
   const navigate = useNavigate();
 
@@ -12,12 +14,12 @@ const Logout = () => {
     navigate("/");
   };
   return (
-    <Fragment>
+    <div className="logout-container">
       <div>
         <button onClick={handleLogout}>Logout</button>
       </div>
       <Outlet />
-    </Fragment>
+    </div>
   );
 };
 

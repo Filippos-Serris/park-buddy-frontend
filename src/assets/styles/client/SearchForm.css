@@ -1,0 +1,45 @@
+.search-form-container {
+    background-color: white;
+    margin: 3rem 5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 40%;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-form-container h1,
+p {
+    text-align: center;
+}
+
+.city-container,
+.vehicle-container {
+    align-self: center;
+    margin: 1rem auto;
+}
+
+.search-form-container label {
+    margin: 0 0.5rem;
+    color: gray;
+    font-weight: bold;
+}
+
+.city-container input,
+.date-container input {
+    color: grey;
+    border: none;
+    border-bottom: solid thin grey
+}
+
+.date-container {
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.search-form-container button {
+    align-self: center;
+}

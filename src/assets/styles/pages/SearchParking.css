@@ -1,0 +1,27 @@
+.search-parking-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("../../img/search-parking.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-top: 4rem;
+    height: calc(100% - 4rem);
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-parking-container h2 {
+    border-bottom: solid thick black;
+    width: 100vh;
+    text-align: center;
+
+}

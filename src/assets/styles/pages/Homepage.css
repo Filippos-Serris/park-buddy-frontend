@@ -32,19 +32,10 @@
 }
 
 .home-container button {
-    font-size: 2rem;
-    border-radius: 0.5rem;
-    margin: 0 2rem;
-
-}
-
-.home-container a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.home-container button {
     font-size: 1.5rem;
     font-weight: bolder;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 0.5rem;
+    margin: 0 2rem;
+    padding: 0.5rem;
 }

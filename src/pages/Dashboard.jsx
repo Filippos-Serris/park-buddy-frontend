@@ -1,19 +1,14 @@
-import { useNavigate } from "react-router-dom";
-
 import ClientDashboard from "../components/Client/Dashboard/ClientDashboard";
 import OwnerDashboard from "../components/Owner/Dashboard/OwnerDashboard";
 
+import "../assets/styles/pages/Dashboard.css";
+
 const Dashboard = () => {
   const role = localStorage.getItem("role");
-  const navigate = useNavigate();
-
-  const parking = () => {
-    navigate("/add-parking");
-  };
 
   return (
-    <div>
-      <h1>Your {role}</h1>
+    <div className="dashboard-container">
+      <h1>Hi {role}</h1>
       {role === "client" && (
         <div>
           <ClientDashboard />

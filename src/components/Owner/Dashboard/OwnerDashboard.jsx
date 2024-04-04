@@ -13,7 +13,7 @@ const OwnerDashboard = () => {
 
   return (
     <div>
-      <h2>Client dash</h2>
+      <div>Parkings</div>
       <button onClick={registerVehicle}>Vehicle</button>
       <button onClick={parking}>Parking</button>
     </div>

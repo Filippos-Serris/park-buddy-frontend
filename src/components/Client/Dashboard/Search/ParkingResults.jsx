@@ -16,10 +16,9 @@ const ParkingResults = (props) => {
 
   return (
     <div>
-      <h2>Available parkings in the area</h2>
       <ul>
         {availableParkings.map((data) => (
-          <li>
+          <li key={data._id}>
             <ParkingResult parkings={data} />
           </li>
         ))}
@@ -27,7 +26,7 @@ const ParkingResults = (props) => {
       <p>----------------Full parking--------------</p>
       <ul>
         {fullParkings.map((data) => (
-          <li>
+          <li key={data._id}>
             <ParkingResult parkings={data} />
           </li>
         ))}

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import SearchForm from "../components/Client/Dashboard/Search/SearchForm";
 import ParkingResults from "../components/Client/Dashboard/Search/ParkingResults";
 
+import "../assets/styles/pages/SearchParking.css";
+
 const SearchParking = () => {
   const token = localStorage.getItem("token");
 
@@ -64,10 +66,14 @@ const SearchParking = () => {
   }, [filters]);
 
   return (
-    <div>
-      <h1>Parking search</h1>
+    <div className="search-parking-container">
       <SearchForm onSearch={searchForParking} />
-      {showParkings && <ParkingResults parkings={parkings} />}
+      {showParkings && (
+        <div>
+          <h2>Available parkings in the area</h2>
+          <ParkingResults parkings={parkings} />
+        </div>
+      )}
     </div>
   );
 };

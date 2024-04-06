@@ -2,14 +2,15 @@ import "./App.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Homepage from "./pages/Homepage.jsx";
-import LogIn from "./pages/LogIn.jsx";
-import RegisterUser from "./pages/RegisterUser.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import RegisterVehicle from "./pages/RegisterVehicle.jsx";
-import RegisterParking from "./pages/RegisterParking.jsx";
-import SearchParking from "./pages/SearchParking.jsx";
-import Logout from "./pages/Logout.jsx";
+import Homepage from "./pages/common/Homepage.jsx";
+import LogIn from "./pages/common/LogIn.jsx";
+import RegisterUser from "./pages/common/RegisterUser.jsx";
+import Dashboard from "./pages/common/Dashboard.jsx";
+import RegisterVehicle from "./pages/client/RegisterVehicle.jsx";
+import RegisterParking from "./pages/owner/RegisterParking.jsx";
+import SearchParking from "./pages/client/SearchParking.jsx";
+import Logout from "./pages/common/Logout.jsx";
+import Parking from "./components/Client/Dashboard/SearchParking/Parking.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Homepage /> },
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "/add-vehicle", element: <RegisterVehicle /> },
       { path: "/add-parking", element: <RegisterParking /> },
       { path: "/search-parking", element: <SearchParking /> },
+      { path: "/parking/:parkingId", element: <Parking /> },
     ],
   },
 ]);

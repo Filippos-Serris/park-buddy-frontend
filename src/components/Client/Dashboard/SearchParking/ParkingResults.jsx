@@ -1,3 +1,5 @@
+import "../../../../assets/styles/client/Dashboard/SearchParking/ParkingResults.css";
+
 import ParkingResult from "./ParkingResult";
 
 const ParkingResults = (props) => {

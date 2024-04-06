@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../assets/styles/pages/RegisterVehicle.css";
+import "../../assets/styles/pages/client/RegisterVehicle.css";
 
 const RegisterVehicle = () => {
   const token = localStorage.getItem("token");

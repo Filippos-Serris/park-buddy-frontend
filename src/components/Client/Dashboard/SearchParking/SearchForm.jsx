@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import "../../../../assets/styles/client/SearchForm.css";
+import "../../../../assets/styles/client/Dashboard/SearchParking/SearchForm.css";
 
 const SearchForm = (props) => {
   const { onSearch } = props;
@@ -42,7 +42,7 @@ const SearchForm = (props) => {
 
   useEffect(() => {
     async function fetchVehicles() {
-      const res = await fetch("http://localhost:8080/vehicles", {
+      const res = await fetch("http://localhost:8080/vehicle", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

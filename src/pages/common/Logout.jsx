@@ -1,8 +1,7 @@
-import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import "../assets/styles/pages/Logout.css";
+import "../../assets/styles/pages/common/Logout.css";
 
 const Logout = () => {
   const navigate = useNavigate();

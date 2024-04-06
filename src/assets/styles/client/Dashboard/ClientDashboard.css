@@ -6,7 +6,7 @@
 }
 
 .profile {
-    background-image: url("../../img/dashboard/blue.jpg");
+    background-image: url("../../../img/dashboard/blue.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
 }
 
 .vehicles {
-    background-image: url("../../img/dashboard/grey.jpg");
+    background-image: url("../../../img/dashboard/grey.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -25,7 +25,7 @@
 }
 
 .settings {
-    background-image: url("../../img/dashboard/green-01.jpg");
+    background-image: url("../../../img/dashboard/green-01.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -35,7 +35,7 @@
 }
 
 .active-reservations {
-    background-image: url("../../img/dashboard/orange.jpg");
+    background-image: url("../../../img/dashboard/orange.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -45,7 +45,7 @@
 }
 
 .reservation-history {
-    background-image: url("../../img/dashboard/pink.jpg");
+    background-image: url("../../../img/dashboard/pink.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -54,7 +54,7 @@
 }
 
 .register-vehicle {
-    background-image: url("../../img/dashboard/yellow.jpg");
+    background-image: url("../../../img/dashboard/yellow.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

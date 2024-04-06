@@ -1,7 +1,7 @@
-import ClientDashboard from "../components/Client/Dashboard/ClientDashboard";
-import OwnerDashboard from "../components/Owner/Dashboard/OwnerDashboard";
+import ClientDashboard from "../../components/Client/Dashboard/ClientDashboard";
+import OwnerDashboard from "../../components/Owner/Dashboard/OwnerDashboard";
 
-import "../assets/styles/pages/Dashboard.css";
+import "../../assets/styles/pages/common/Dashboard.css";
 
 const Dashboard = () => {
   const role = localStorage.getItem("role");

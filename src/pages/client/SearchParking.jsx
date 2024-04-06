@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import SearchForm from "../components/Client/Dashboard/Search/SearchForm";
-import ParkingResults from "../components/Client/Dashboard/Search/ParkingResults";
+import SearchForm from "../../components/Client/Dashboard/SearchParking/SearchForm";
+import ParkingResults from "../../components/Client/Dashboard/SearchParking/ParkingResults";
 
-import "../assets/styles/pages/SearchParking.css";
+import "../../assets/styles/pages/client/SearchParking.css";
 
 const SearchParking = () => {
   const token = localStorage.getItem("token");
@@ -26,19 +26,19 @@ const SearchParking = () => {
       return;
     }
 
-    try {
-      const fetchUrl = new URL("http://localhost:8080/parking");
+    async function fetchParkings() {
+      try {
+        const fetchUrl = new URL("http://localhost:8080/parking");
 
-      fetchUrl.searchParams.append("city", filters.city);
-      fetchUrl.searchParams.append("arrivalDate", filters.arrivalDate);
-      fetchUrl.searchParams.append("arrivalTime", filters.arrivalTime);
-      fetchUrl.searchParams.append("departDate", filters.departDate);
-      fetchUrl.searchParams.append("departTime", filters.departTime);
-      fetchUrl.searchParams.append("vehicle", filters.vehicle);
+        fetchUrl.searchParams.append("city", filters.city);
+        fetchUrl.searchParams.append("arrivalDate", filters.arrivalDate);
+        fetchUrl.searchParams.append("arrivalTime", filters.arrivalTime);
+        fetchUrl.searchParams.append("departDate", filters.departDate);
+        fetchUrl.searchParams.append("departTime", filters.departTime);
+        fetchUrl.searchParams.append("vehicle", filters.vehicle);
 
-      console.log(fetchUrl.toString());
+        console.log(fetchUrl);
 
-      async function fetchParking() {
         const res = await fetch(fetchUrl, {
           method: "GET",
           headers: {
@@ -49,20 +49,17 @@ const SearchParking = () => {
         const resData = await res.json();
         console.log(resData);
 
-        setParkings(resData.parkingData);
+        setParkings(resData.availableParkings);
         setShowParkings(true);
 
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
         if (res.status === 200) {
           //navigate("/dashboard");
         }
+      } catch (error) {
+        console.log(error.message);
       }
-      fetchParking();
-    } catch (error) {
-      console.log(error.message);
     }
+    fetchParkings();
   }, [filters]);
 
   return (

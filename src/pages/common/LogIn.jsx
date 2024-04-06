@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import "../assets/styles/pages/Login.css";
+import "../../assets/styles/pages/common/Login.css";
 
 const Register = () => {
   const usernameRef = useRef();
@@ -27,7 +27,7 @@ const Register = () => {
 
     async function fetchUser() {
       try {
-        const res = await fetch("http://localhost:8080/login", {
+        const res = await fetch("http://localhost:8080/user/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

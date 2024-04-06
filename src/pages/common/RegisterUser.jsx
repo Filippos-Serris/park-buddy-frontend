@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../assets/styles/pages/RegisterUser.css";
+import "../../assets/styles/pages/common/RegisterUser.css";
 
 const Register = () => {
   const [firstLoad, setFirstLoad] = useState(true);

@@ -17,22 +17,32 @@ const ParkingResults = (props) => {
   });
 
   return (
-    <div>
-      <ul>
-        {availableParkings.map((data) => (
-          <li key={data._id}>
-            <ParkingResult parkings={data} />
-          </li>
-        ))}
-      </ul>
-      <p>----------------Full parking--------------</p>
-      <ul>
-        {fullParkings.map((data) => (
-          <li key={data._id}>
-            <ParkingResult parkings={data} />
-          </li>
-        ))}
-      </ul>
+    <div className="parkings-container">
+      {availableParkings.length !== 0 && (
+        <div className="parking-category">
+          <h3>Available parkings</h3>
+          <ul>
+            {availableParkings.map((data) => (
+              <li key={data._id}>
+                <ParkingResult parkings={data} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {fullParkings.length !== 0 && (
+        <div className="parking-category">
+          <h3>Up this point all parking are n full capacity</h3>
+          <ul>
+            {fullParkings.map((data) => (
+              <li key={data._id}>
+                <ParkingResult parkings={data} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

@@ -9,21 +9,28 @@ const SearchParking = () => {
 
   const [firstLoad, setFirstLoad] = useState(true);
   const [triggerSearch, setTriggerSearch] = useState(false);
+  const [showHint, setShowHint] = useState(false);
   const [showParkings, setShowParkings] = useState(false);
 
   const [filters, setFilters] = useState({});
-  const [parkings, setParkings] = useState();
+  const [parkings, setParkings] = useState([]);
 
   const searchForParking = (searchData) => {
     setFilters(searchData);
-    console.log(filters);
+    //console.log(filters);
     setTriggerSearch(!triggerSearch);
+
+    localStorage.setItem("filters", JSON.stringify(searchData));
   };
 
   useEffect(() => {
-    if (firstLoad) {
+    if (firstLoad && localStorage.getItem("filters") === null) {
       setFirstLoad(false);
       return;
+    } else if (firstLoad && localStorage.getItem("filters") !== null) {
+      setFirstLoad(false);
+      const storedFilters = JSON.parse(localStorage.getItem("filters"));
+      searchForParking(storedFilters);
     }
 
     async function fetchParkings() {
@@ -37,7 +44,7 @@ const SearchParking = () => {
         fetchUrl.searchParams.append("departTime", filters.departTime);
         fetchUrl.searchParams.append("vehicle", filters.vehicle);
 
-        console.log(fetchUrl);
+        //console.log(fetchUrl);
 
         const res = await fetch(fetchUrl, {
           method: "GET",
@@ -47,13 +54,13 @@ const SearchParking = () => {
           },
         });
         const resData = await res.json();
-        console.log(resData);
+        //console.log(resData);
 
-        setParkings(resData.availableParkings);
-        setShowParkings(true);
-
-        if (res.status === 200) {
-          //navigate("/dashboard");
+        if (res.status === 200 && resData.availableParkings.length !== 0) {
+          setParkings(resData.availableParkings);
+          setShowParkings(true);
+        } else if (resData.availableParkings.length === 0) {
+          setShowHint(true);
         }
       } catch (error) {
         console.log(error.message);
@@ -65,9 +72,12 @@ const SearchParking = () => {
   return (
     <div className="search-parking-container">
       <SearchForm onSearch={searchForParking} />
+      {parkings.length === 0 && showHint && (
+        <p>Sorry no parking matches your request. Check again</p>
+      )}
       {showParkings && (
         <div>
-          <h2>Available parkings in the area</h2>
+          <h2>Parkings in the area</h2>
           <ParkingResults parkings={parkings} />
         </div>
       )}

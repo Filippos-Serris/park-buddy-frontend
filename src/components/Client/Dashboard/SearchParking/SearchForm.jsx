@@ -4,7 +4,6 @@ import "../../../../assets/styles/client/Dashboard/SearchParking/SearchForm.css"
 
 const SearchForm = (props) => {
   const { onSearch } = props;
-
   const token = localStorage.getItem("token");
 
   const cityRef = useRef();
@@ -23,7 +22,7 @@ const SearchForm = (props) => {
     const searchData = {
       city: cityRef.current.value,
       arrivalDate: arrivalDateRef.current.value,
-      arrivalTime: arrivalDateRef.current.value,
+      arrivalTime: arrivalTimeRef.current.value,
       departDate: departDateRef !== null ? departDateRef.current.value : null,
       departTime: departTimeRef !== null ? departTimeRef.current.value : null,
       vehicle: selectedVehicle,
@@ -50,7 +49,7 @@ const SearchForm = (props) => {
         },
       });
       const resData = await res.json();
-      console.log(resData);
+      //console.log(resData);
       setVehicles(resData.vehicles);
     }
     fetchVehicles();

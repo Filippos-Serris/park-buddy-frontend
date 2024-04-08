@@ -39,6 +39,7 @@ const Register = () => {
       contactInfo: contactInfoRef.current.value,
       role: role,
     };
+
     async function postUser() {
       try {
         const res = await fetch("http://localhost:8080/user", {
@@ -49,6 +50,7 @@ const Register = () => {
           body: JSON.stringify(userData),
         });
         if (!res.ok) {
+          console.log(res.status);
           const errorData = await res.json();
           setError(`Error: ${errorData.error}`);
         } else {
@@ -63,8 +65,9 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setTriggerSubmit(!triggerSubmit);
 
-    const password = passwordRef.current.value;
+    /* const password = passwordRef.current.value;
     const repeatPassword = repeatPasswordRef.current.value;
 
     if (password === repeatPassword) {
@@ -76,7 +79,7 @@ const Register = () => {
     } else setRoleError(false);
 
     if (password === repeatPassword && role !== null)
-      setTriggerSubmit(!triggerSubmit);
+      setTriggerSubmit(!triggerSubmit); */
   };
 
   const roleChangeHandler = (event) => {
